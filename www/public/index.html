@@ -2,8 +2,122 @@
 <html lang="ko">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Bibrary Demo</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+
+        <title>scrollbar-toc - Scrollbar-style Table of Contents for All JavaScript Frameworks</title>
+        <meta
+            name="description"
+            content="A lightweight (2KB) framework-agnostic table of contents library with zero dependencies. Supports React, Vue, Svelte, and vanilla JavaScript. Automatically parse headings and create scrollbar-style navigation." />
+        <meta
+            name="keywords"
+            content="scrollbar toc, table of contents, navigation component, react toc, vue toc, svelte toc, vanilla javascript, framework agnostic, zero dependencies, lightweight library, heading navigation, sticky toc, scrollbar navigation, h1-h6 parser, spa navigation" />
+        <meta name="author" content="Hyunseok Byun" />
+        <meta name="theme-color" content="#646cff" />
+        <meta name="color-scheme" content="light dark" />
+
+        <link rel="icon" type="image/x-icon" href="https://blog.gumyo.net/favicon.ico" />
+        <link rel="shortcut icon" type="image/x-icon" href="https://blog.gumyo.net/favicon.ico" />
+        <link rel="apple-touch-icon" href="https://blog.gumyo.net/favicon.ico" />
+
+        <link rel="canonical" href="https://b-hs.github.io/scrollbar-toc/" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="scrollbar-toc - Scrollbar-style Table of Contents for All JavaScript Frameworks" />
+        <meta
+            property="og:description"
+            content="A lightweight (2KB) framework-agnostic table of contents library with zero dependencies. Supports React, Vue, Svelte, and vanilla JavaScript." />
+        <meta property="og:url" content="https://b-hs.github.io/scrollbar-toc/" />
+        <meta property="og:site_name" content="scrollbar-toc" />
+        <meta property="og:locale" content="ko_KR" />
+        <meta property="og:locale:alternate" content="en_US" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="scrollbar-toc - Scrollbar-style Table of Contents" />
+        <meta
+            name="twitter:description"
+            content="A lightweight (2KB) framework-agnostic table of contents library with zero dependencies. Supports React, Vue, Svelte, and vanilla JavaScript." />
+        <meta name="twitter:creator" content="@B-HS" />
+
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="googlebot" content="index, follow" />
+        <meta name="bingbot" content="index, follow" />
+
+        <link rel="alternate" hreflang="ko" href="https://b-hs.github.io/scrollbar-toc/" />
+        <link rel="alternate" hreflang="en" href="https://b-hs.github.io/scrollbar-toc/" />
+        <link rel="alternate" hreflang="x-default" href="https://b-hs.github.io/scrollbar-toc/" />
+
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@graph": [
+                    {
+                        "@type": "SoftwareApplication",
+                        "name": "scrollbar-toc",
+                        "applicationCategory": "DeveloperApplication",
+                        "operatingSystem": "Any",
+                        "description": "A lightweight (2KB) framework-agnostic table of contents library with zero dependencies. Automatically parse headings (h1-h6) in documents and create intuitive scrollbar-style navigation buttons.",
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "0",
+                            "priceCurrency": "USD"
+                        },
+                        "author": {
+                            "@type": "Person",
+                            "name": "Hyunseok Byun"
+                        },
+                        "softwareVersion": "1.0.0",
+                        "url": "https://b-hs.github.io/scrollbar-toc/",
+                        "downloadUrl": "https://www.npmjs.com/package/scrollbar-toc",
+                        "license": "https://opensource.org/licenses/MIT",
+                        "programmingLanguage": "JavaScript",
+                        "keywords": "table of contents, navigation, scrollbar, React, Vue, Svelte, vanilla JavaScript, framework agnostic, zero dependencies"
+                    },
+                    {
+                        "@type": "WebSite",
+                        "name": "scrollbar-toc Documentation",
+                        "url": "https://b-hs.github.io/scrollbar-toc/",
+                        "description": "Official documentation and examples for scrollbar-toc library",
+                        "inLanguage": ["ko", "en"],
+                        "potentialAction": {
+                            "@type": "SearchAction",
+                            "target": "https://github.com/B-HS/scrollbar-toc/search?q={search_term_string}",
+                            "query-input": "required name=search_term_string"
+                        }
+                    },
+                    {
+                        "@type": "Organization",
+                        "name": "scrollbar-toc",
+                        "url": "https://github.com/B-HS/scrollbar-toc",
+                        "logo": "https://blog.gumyo.net/favicon.ico",
+                        "sameAs": ["https://github.com/B-HS/scrollbar-toc", "https://www.npmjs.com/package/scrollbar-toc"]
+                    },
+                    {
+                        "@type": "BreadcrumbList",
+                        "itemListElement": [
+                            {
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "Home",
+                                "item": "https://b-hs.github.io/scrollbar-toc/"
+                            },
+                            {
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "Documentation",
+                                "item": "https://b-hs.github.io/scrollbar-toc/#introduction"
+                            },
+                            {
+                                "@type": "ListItem",
+                                "position": 3,
+                                "name": "Examples",
+                                "item": "https://b-hs.github.io/scrollbar-toc/#examples"
+                            }
+                        ]
+                    }
+                ]
+            }
+        </script>
+
         <link rel="stylesheet" href="/index.css" />
     </head>
     <body>
