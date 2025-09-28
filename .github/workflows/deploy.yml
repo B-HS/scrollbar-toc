@@ -30,7 +30,22 @@ jobs:
       - name: Build package
         run: bun run build:package
 
+      - name: Check if version exists on npm
+        id: check-version
+        working-directory: ./package
+        run: |
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          PACKAGE_NAME=$(node -p "require('./package.json').name")
+          if npm view $PACKAGE_NAME@$PACKAGE_VERSION version 2>/dev/null; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+            echo "Version $PACKAGE_VERSION already exists on npm"
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+            echo "Version $PACKAGE_VERSION does not exist, will publish"
+          fi
+
       - name: Publish to npm
+        if: steps.check-version.outputs.skip == 'false'
         working-directory: ./package
         run: npm publish --provenance --access public
         env:

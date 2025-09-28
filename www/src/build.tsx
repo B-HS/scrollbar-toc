@@ -3,6 +3,7 @@ import { App } from './App'
 import { mkdir, writeFile } from 'fs/promises'
 import { join } from 'path'
 import { config, getPackageInfo } from './config'
+import { LanguageProvider } from './i18n/context'
 
 const { libraryName } = getPackageInfo()
 
@@ -26,7 +27,11 @@ const buildClient = async () => {
 
 const buildHTML = async () => {
     const template = await Bun.file(config.templatePath).text()
-    const html = renderToString(<App />)
+    const html = renderToString(
+        <LanguageProvider>
+            <App />
+        </LanguageProvider>,
+    )
 
     const importMap = libraryName
         ? `<script type="importmap">
