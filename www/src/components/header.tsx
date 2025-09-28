@@ -1,4 +1,5 @@
 import { useLanguage } from '../i18n/context'
+import { config } from '../config'
 
 export const Header = ({ currentPage, setCurrentPage }: { currentPage: string; setCurrentPage: (page: string) => void }) => {
     const { language, setLanguage, t } = useLanguage()
@@ -10,7 +11,7 @@ export const Header = ({ currentPage, setCurrentPage }: { currentPage: string; s
     return (
         <header className='header'>
             <div className='header-content'>
-                <a href='/' className='logo'>
+                <a href={`${config.basePath}/`} className='logo'>
                     <div className='logo-icon'>S</div>
                     scrollbar-toc
                 </a>
