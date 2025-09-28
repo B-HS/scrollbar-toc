@@ -55,6 +55,9 @@ export const Home = () => {
             <h3 id='customization'>{t.introduce.customization}</h3>
             <p>{t.introduce.customizationDescription}</p>
 
+            <h3 id='level-filtering'>{t.introduce.levelFiltering}</h3>
+            <p>{t.introduce.levelFilteringDescription}</p>
+
             <h2 id='browser-support'>{t.introduce.browserSupport}</h2>
             <p>
                 <span className='badge badge-green'>✅ Chrome 60+</span>

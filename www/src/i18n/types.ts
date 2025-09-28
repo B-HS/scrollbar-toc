@@ -31,6 +31,8 @@ export type Translation = {
         smartPositioningDescription: string
         customization: string
         customizationDescription: string
+        levelFiltering: string
+        levelFilteringDescription: string
         browserSupport: string
         bundleSize: string
         bundleSizeDescription: string

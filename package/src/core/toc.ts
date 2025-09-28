@@ -18,7 +18,7 @@ export const setScrollToc = (htmlElement?: HTMLElement, options?: ButtonOptions)
         prev.containers.forEach((c) => c.remove())
     }
 
-    const headings = parseHeading(htmlElement)
+    const headings = parseHeading(htmlElement, options?.exceptLevel)
     const positions = calculateHeadingPositions(headings, options?.scrollOffset)
     const containers = renderButtons(positions, options)
 

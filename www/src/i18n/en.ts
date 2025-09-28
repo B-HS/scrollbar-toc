@@ -29,12 +29,15 @@ export const en: Translation = {
         automaticParsing: 'Automatic Heading Detection',
         automaticParsingDescription:
             'The library automatically detects all heading elements (h1-h6) in your document and creates navigation buttons positioned proportionally to the document height.',
-        smartPositioning: 'Smart Positioning',
+        smartPositioning: 'Smart Positioning with Overlap Prevention',
         smartPositioningDescription:
-            'Buttons are positioned using a sophisticated algorithm that maps document scroll positions to viewport coordinates, providing intuitive navigation similar to scrollbar behavior.',
+            'Buttons are positioned using a sophisticated algorithm that maps document scroll positions to viewport coordinates. When buttons are too close together, they are automatically grouped and repositioned to prevent overlap, ensuring clear navigation with a minimum gap based on button height (default: 16px).',
         customization: 'Extensive Customization',
         customizationDescription:
             'Customize appearance with CSS classes, adjust positioning with offsets, and add custom click handlers for analytics or other functionality.',
+        levelFiltering: 'Selective Heading Levels',
+        levelFilteringDescription:
+            'Choose which heading levels to include in the TOC using the exceptLevel option. For example, exceptLevel: [1] excludes h1 elements, exceptLevel: [1, 2] excludes both h1 and h2 elements.',
         browserSupport: 'Browser Support',
         bundleSize: 'Bundle Size',
         bundleSizeDescription: 'Lightweight and optimized for production:',

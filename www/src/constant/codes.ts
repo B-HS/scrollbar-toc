@@ -33,6 +33,7 @@ setScrollToc(article, {
     className: 'custom-toc',
     rightOffset: 20,
     scrollOffset: -80,
+    exceptLevel: [1, 2],
     onClick: (position) => {
         console.log('Navigated to:', position.element.textContent)
     }
@@ -128,12 +129,16 @@ export const optionsCode = `type ButtonOptions = {
     onClick?: ButtonClickCallback
     rightOffset?: number
     scrollOffset?: number
+    buttonHeight?: number
+    exceptLevel?: number[]
 }
 
 setScrollToc(element, {
     className: 'my-toc-button',
     rightOffset: 20,
     scrollOffset: -80,
+    buttonHeight: 20,
+    exceptLevel: [1],
     onClick: (position) => {
         gtag('event', 'toc_navigation', {
             heading_text: position.element.textContent,

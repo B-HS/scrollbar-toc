@@ -29,12 +29,15 @@ export const kr: Translation = {
         automaticParsing: '자동 제목 감지',
         automaticParsingDescription:
             '라이브러리는 문서의 모든 제목 요소(h1-h6)를 자동으로 감지하고 문서 높이에 비례하여 배치된 네비게이션 버튼을 생성합니다.',
-        smartPositioning: '스마트 포지셔닝',
+        smartPositioning: '겹침 방지 스마트 포지셔닝',
         smartPositioningDescription:
-            '버튼은 문서 스크롤 위치를 뷰포트 좌표에 매핑하는 정교한 알고리즘을 사용하여 배치되며, 스크롤바 동작과 유사한 직관적인 네비게이션을 제공합니다.',
+            '버튼은 문서 스크롤 위치를 뷰포트 좌표에 매핑하는 정교한 알고리즘을 사용하여 배치됩니다. 버튼들이 너무 가까이 있을 경우 자동으로 그룹화하고 재배치하여 겹침을 방지하며, 버튼 높이 기반의 최소 간격(기본값: 16px)을 보장합니다.',
         customization: '광범위한 커스터마이징',
         customizationDescription:
             'CSS 클래스로 외관을 커스터마이즈하고, 오프셋으로 위치를 조정하며, 분석이나 기타 기능을 위한 커스텀 클릭 핸들러를 추가할 수 있습니다.',
+        levelFiltering: '선택적 제목 레벨',
+        levelFilteringDescription:
+            'exceptLevel 옵션을 사용하여 TOC에 포함할 제목 레벨을 선택할 수 있습니다. 예를 들어, exceptLevel: [1]은 h1 요소를 제외하고, exceptLevel: [1, 2]는 h1과 h2 요소를 모두 제외합니다.',
         browserSupport: '브라우저 지원',
         bundleSize: '번들 크기',
         bundleSizeDescription: '프로덕션에 최적화된 경량 라이브러리:',
