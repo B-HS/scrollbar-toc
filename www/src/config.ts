@@ -9,4 +9,5 @@ export const config = {
     port: 3000,
     templatePath: './public/index.html',
     isDev: process.env.NODE_ENV !== 'production',
+    basePath: process.env.BASE_PATH || '',
 }

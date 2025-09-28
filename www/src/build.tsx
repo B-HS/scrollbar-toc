@@ -33,11 +33,12 @@ const buildHTML = async () => {
         </LanguageProvider>,
     )
 
+    const { basePath } = config
     const importMap = libraryName
         ? `<script type="importmap">
     {
       "imports": {
-        "${libraryName}": "/lib.js"
+        "${libraryName}": "${basePath}/lib.js"
       }
     }
     </script>`
@@ -46,7 +47,8 @@ const buildHTML = async () => {
     const result = template
         .replace('</head>', `${importMap}\n  </head>`)
         .replace('<div id="root"></div>', `<div id="root" data-prerendered>${html}</div>`)
-        .replace('</body>', `<script type="module" src="/client.js"></script>\n  </body>`)
+        .replace('</body>', `<script type="module" src="${basePath}/client.js"></script>\n  </body>`)
+        .replace(/href="\/index.css"/g, `href="${basePath}/index.css"`)
 
     await writeFile(join(config.distDir, 'index.html'), result)
 }
