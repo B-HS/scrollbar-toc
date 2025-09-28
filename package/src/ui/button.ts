@@ -1,17 +1,30 @@
 import type { ButtonOptions, HeadingPosition } from '../types/position'
 
 export const renderButtons = (positions: HeadingPosition[], options?: ButtonOptions): HTMLElement[] => {
-    const threshold = 30
+    const buttonHeight = options?.buttonHeight || 16
+    const minGap = buttonHeight
     const groups: { top: number; items: HeadingPosition[] }[] = []
 
     positions.forEach((pos) => {
-        const existingGroup = groups.find((g) => Math.abs(g.top - pos.fixedTop) < threshold)
+        const existingGroup = groups.find((g) => Math.abs(g.top - pos.fixedTop) < minGap)
         if (existingGroup) {
             existingGroup.items.push(pos)
         } else {
             groups.push({ top: pos.fixedTop, items: [pos] })
         }
     })
+
+    groups.sort((a, b) => a.top - b.top)
+
+    for (let i = 1; i < groups.length; i++) {
+        const prev = groups[i - 1]!
+        const curr = groups[i]!
+        const prevBottom = prev.top + prev.items.length * (buttonHeight + 4) - 4
+
+        if (curr.top < prevBottom + minGap) {
+            curr.top = prevBottom + minGap
+        }
+    }
 
     const containers: HTMLElement[] = []
     const offset = options?.rightOffset || 0

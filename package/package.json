@@ -1,6 +1,6 @@
 {
     "name": "scrollbar-toc",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Scrollbar-style sticky TOC for every JavaScript web framework/library",
     "author": "Hyunseok Byun",
     "license": "MIT",

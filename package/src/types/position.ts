@@ -12,4 +12,5 @@ export type ButtonOptions = {
     rightOffset?: number
     scrollOffset?: number
     buttonTopOffset?: number
+    buttonHeight?: number
 }
