@@ -1,4 +1,4 @@
-import { getPackageInfo } from '../config'
+import { getPackageInfo, config } from '../config'
 
 export const buildDevBundle = async () => {
     const { libraryName } = getPackageInfo()
@@ -10,6 +10,10 @@ export const buildDevBundle = async () => {
         minify: false,
         sourcemap: 'inline',
         external: libraryName ? [libraryName] : [],
+        define: {
+            'process.env.BASE_PATH': JSON.stringify(config.basePath),
+            'process.env.NODE_ENV': JSON.stringify(config.isDev ? 'development' : 'production'),
+        },
     })
 
     if (!result.success) {
