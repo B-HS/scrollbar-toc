@@ -30,6 +30,10 @@ jobs:
       - name: Build package
         run: bun run build:package
 
+      - name: Test package
+        working-directory: ./package
+        run: bun test
+
       - name: Check if version exists on npm
         id: check-version
         working-directory: ./package

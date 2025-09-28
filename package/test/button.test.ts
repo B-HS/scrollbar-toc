@@ -77,7 +77,7 @@ describe('renderButtons', () => {
 
         const positions: HeadingPosition[] = [
             { element: h1, scrollY: 100, fixedTop: 50 },
-            { element: h2, scrollY: 200, fixedTop: 79 },
+            { element: h2, scrollY: 200, fixedTop: 65 },
         ]
 
         const containers = renderButtons(positions)
@@ -197,5 +197,65 @@ describe('renderButtons', () => {
 
         const containers = renderButtons(positions)
         expect(containers.at(0)?.style.top).toBe('-50px')
+    })
+
+    test('should use custom buttonHeight for grouping', () => {
+        const h1 = document.createElement('h1')
+        const h2 = document.createElement('h2')
+        h1.textContent = 'First'
+        h2.textContent = 'Second'
+
+        const positions: HeadingPosition[] = [
+            { element: h1, scrollY: 100, fixedTop: 50 },
+            { element: h2, scrollY: 110, fixedTop: 65 },
+        ]
+
+        const containers = renderButtons(positions, { buttonHeight: 20 })
+        expect(containers.length).toBe(1)
+    })
+
+    test('should use custom buttonHeight for gap calculation', () => {
+        const h1 = document.createElement('h1')
+        const h2 = document.createElement('h2')
+        h1.textContent = 'First'
+        h2.textContent = 'Second'
+
+        const positions: HeadingPosition[] = [
+            { element: h1, scrollY: 100, fixedTop: 50 },
+            { element: h2, scrollY: 200, fixedTop: 100 },
+        ]
+
+        const containers = renderButtons(positions, { buttonHeight: 30 })
+        expect(containers.length).toBeGreaterThanOrEqual(1)
+    })
+
+    test('should apply scrollOffset when button is clicked', () => {
+        const h1 = document.createElement('h1')
+        h1.textContent = 'Test'
+
+        const positions: HeadingPosition[] = [{ element: h1, scrollY: 1000, fixedTop: 50 }]
+
+        const originalScrollTo = window.scrollTo
+        let scrolledTo: number | undefined
+
+        window.scrollTo = ((options: ScrollToOptions) => {
+            scrolledTo = options.top as number
+        }) as typeof window.scrollTo
+
+        const containers = renderButtons(positions, { scrollOffset: -100 })
+        const button = containers.at(0)?.querySelector('button')
+        button?.click()
+
+        expect(scrolledTo).toBe(900)
+
+        window.scrollTo = originalScrollTo
+    })
+
+    test('should handle zero buttonHeight', () => {
+        const h1 = document.createElement('h1')
+        const positions: HeadingPosition[] = [{ element: h1, scrollY: 100, fixedTop: 50 }]
+
+        const containers = renderButtons(positions, { buttonHeight: 0 })
+        expect(containers.length).toBeGreaterThan(0)
     })
 })

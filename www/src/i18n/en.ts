@@ -4,6 +4,7 @@ export const en: Translation = {
     header: {
         docs: 'Docs',
         examples: 'Examples',
+        liveDemo: 'Live Demo',
     },
     introduce: {
         title: 'scrollbar-toc',
@@ -76,5 +77,12 @@ export const en: Translation = {
         mobileConsiderations: 'Mobile Considerations',
         mobileConsiderationsDescription:
             'TOC buttons are automatically hidden on mobile devices (768px and below) to preserve screen real estate. This can be customized with CSS media queries.',
+    },
+    liveDemo: {
+        title: 'Live Demo',
+        description: 'See scrollbar-toc in action on real websites with complex content structure.',
+        blogExample: 'Technical Blog Post',
+        blogExampleDescription: 'A real blog article demonstrating scrollbar-toc with multiple nested headings and long-form content.',
+        visitSite: 'Visit Blog',
     },
 }

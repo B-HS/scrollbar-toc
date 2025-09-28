@@ -18,13 +18,18 @@ export const Header = ({ currentPage, setCurrentPage }: { currentPage: string; s
                 <nav>
                     <ul className='nav-links'>
                         <li>
-                            <button onClick={() => setCurrentPage('docs')} className={`nav-link ${currentPage !== 'sample' ? 'active' : ''}`}>
+                            <button onClick={() => setCurrentPage('docs')} className={`nav-link ${currentPage !== 'sample' && currentPage !== 'live-demo' ? 'active' : ''}`}>
                                 {t.header.docs}
                             </button>
                         </li>
                         <li>
                             <button onClick={() => setCurrentPage('sample')} className={`nav-link ${currentPage === 'sample' ? 'active' : ''}`}>
                                 {t.header.examples}
+                            </button>
+                        </li>
+                        <li>
+                            <button onClick={() => setCurrentPage('live-demo')} className={`nav-link ${currentPage === 'live-demo' ? 'active' : ''}`}>
+                                {t.header.liveDemo}
                             </button>
                         </li>
                         <li>

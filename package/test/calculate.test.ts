@@ -120,4 +120,45 @@ describe('calculateHeadingPositions', () => {
 
         document.body.removeChild(container)
     })
+
+    test('should apply scrollOffset parameter', () => {
+        const div = document.createElement('div')
+        div.innerHTML = '<h1>Test</h1>'
+        document.body.appendChild(div)
+
+        const headings = div.querySelectorAll('h1')
+        const positionsWithoutOffset = calculateHeadingPositions(headings, 0)
+        const positionsWithOffset = calculateHeadingPositions(headings, 100)
+
+        expect(positionsWithOffset.at(0)?.fixedTop).toBeGreaterThanOrEqual(positionsWithoutOffset.at(0)?.fixedTop ?? 0)
+
+        document.body.removeChild(div)
+    })
+
+    test('should handle negative scrollOffset', () => {
+        const div = document.createElement('div')
+        div.innerHTML = '<h1>Test</h1>'
+        document.body.appendChild(div)
+
+        const headings = div.querySelectorAll('h1')
+        const positionsWithNegativeOffset = calculateHeadingPositions(headings, -100)
+
+        expect(typeof positionsWithNegativeOffset.at(0)?.fixedTop).toBe('number')
+        expect(positionsWithNegativeOffset.at(0)?.fixedTop).toBeGreaterThanOrEqual(0)
+
+        document.body.removeChild(div)
+    })
+
+    test('should handle large scrollOffset values', () => {
+        const div = document.createElement('div')
+        div.innerHTML = '<h1>Test</h1>'
+        document.body.appendChild(div)
+
+        const headings = div.querySelectorAll('h1')
+        const positions = calculateHeadingPositions(headings, 10000)
+
+        expect(positions.at(0)?.fixedTop).toBeLessThanOrEqual(window.innerHeight)
+
+        document.body.removeChild(div)
+    })
 })

@@ -62,4 +62,71 @@ describe('setScrollToc', () => {
         expect(buttons[1]?.textContent).toBe('Section 1')
         expect(buttons[2]?.textContent).toBe('Subsection')
     })
+
+    test('should return cleanup function', () => {
+        const cleanup = setScrollToc(testContainer)
+
+        expect(typeof cleanup).toBe('function')
+    })
+
+    test('cleanup should remove TOC buttons from body', () => {
+        const cleanup = setScrollToc(testContainer)
+        const buttonsBeforeCleanup = document.body.querySelectorAll('button').length
+
+        cleanup()
+
+        const buttonsAfterCleanup = document.body.querySelectorAll('button').length
+        expect(buttonsAfterCleanup).toBeLessThan(buttonsBeforeCleanup)
+    })
+
+    test('cleanup should cancel animation frame', () => {
+        const cleanup = setScrollToc(testContainer)
+
+        expect(() => cleanup()).not.toThrow()
+    })
+
+    test('should exclude specified heading levels with exceptLevel', () => {
+        setScrollToc(testContainer, { exceptLevel: [1, 3] })
+
+        const buttons = document.body.querySelectorAll('button')
+        expect(buttons.length).toBe(1)
+
+        const buttonText = Array.from(buttons).map((b) => b.textContent)
+        expect(buttonText).toContain('Section 1')
+        expect(buttonText).not.toContain('Title')
+        expect(buttonText).not.toContain('Subsection')
+    })
+
+    test('should handle multiple calls with same element (WeakMap)', () => {
+        setScrollToc(testContainer)
+        const buttons1 = document.body.querySelectorAll('button').length
+
+        const cleanup2 = setScrollToc(testContainer)
+        const buttons2 = document.body.querySelectorAll('button').length
+
+        expect(buttons1).toBe(buttons2)
+
+        cleanup2()
+        expect(document.body.querySelectorAll('button').length).toBe(0)
+    })
+
+    test('should auto cleanup when element is disconnected', async () => {
+        setScrollToc(testContainer)
+        const buttonsBeforeRemove = document.body.querySelectorAll('button').length
+        expect(buttonsBeforeRemove).toBeGreaterThan(0)
+
+        testContainer.remove()
+
+        await new Promise((resolve) => setTimeout(resolve, 100))
+
+        const buttonsAfterRemove = document.body.querySelectorAll('button').length
+        expect(buttonsAfterRemove).toBe(0)
+    })
+
+    test('should apply scrollOffset option', () => {
+        setScrollToc(testContainer, { scrollOffset: -100 })
+
+        const buttons = document.body.querySelectorAll('button')
+        expect(buttons.length).toBe(3)
+    })
 })

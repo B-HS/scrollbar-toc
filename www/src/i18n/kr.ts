@@ -4,6 +4,7 @@ export const kr: Translation = {
     header: {
         docs: '문서',
         examples: '예제',
+        liveDemo: '실제 사용 예시',
     },
     introduce: {
         title: 'scrollbar-toc',
@@ -75,5 +76,12 @@ export const kr: Translation = {
         mobileConsiderations: '모바일 고려사항',
         mobileConsiderationsDescription:
             'TOC 버튼은 화면 공간을 보존하기 위해 모바일 기기(768px 이하)에서 자동으로 숨겨집니다. 이는 CSS 미디어 쿼리로 커스터마이즈할 수 있습니다.',
+    },
+    liveDemo: {
+        title: '실제 사용 예시',
+        description: '복잡한 콘텐츠 구조를 가진 실제 웹사이트에서 scrollbar-toc가 동작하는 모습을 확인하세요.',
+        blogExample: '기술 블로그 포스트',
+        blogExampleDescription: '여러 단계로 중첩된 제목과 긴 콘텐츠를 가진 실제 블로그 글에서 scrollbar-toc를 시연합니다.',
+        visitSite: '블로그 방문하기',
     },
 }

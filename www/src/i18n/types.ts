@@ -4,6 +4,7 @@ export type Translation = {
     header: {
         docs: string
         examples: string
+        liveDemo: string
     }
     introduce: {
         title: string
@@ -64,5 +65,12 @@ export type Translation = {
         dynamicContentDescription: string
         mobileConsiderations: string
         mobileConsiderationsDescription: string
+    }
+    liveDemo: {
+        title: string
+        description: string
+        blogExample: string
+        blogExampleDescription: string
+        visitSite: string
     }
 }

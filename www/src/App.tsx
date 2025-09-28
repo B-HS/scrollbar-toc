@@ -3,6 +3,7 @@ import { setScrollToc } from 'scrollbar-toc'
 import { Header } from './components/header'
 import { Home } from './pages/introduce'
 import { Sample } from './pages/sample'
+import { LiveDemo } from './pages/live-demo'
 
 export const App = () => {
     const [currentPage, setCurrentPage] = useState('')
@@ -20,7 +21,9 @@ export const App = () => {
         <div className='docs-layout' ref={description}>
             <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />
             <main className='main-content'>
-                <div className='content-wrapper'>{currentPage === 'sample' ? <Sample /> : <Home />}</div>
+                <div className='content-wrapper'>
+                    {currentPage === 'sample' ? <Sample /> : currentPage === 'live-demo' ? <LiveDemo /> : <Home />}
+                </div>
             </main>
         </div>
     )
