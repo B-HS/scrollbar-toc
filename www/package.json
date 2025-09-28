@@ -1,0 +1,21 @@
+{
+    "name": "scrollbar-toc-www",
+    "version": "0.0.1",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "bun src/server.tsx",
+        "build": "bun run src/build.tsx",
+        "preview": "NODE_ENV=production bun run src/server.tsx"
+    },
+    "dependencies": {
+        "scrollbar-toc": "workspace:*",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1"
+    },
+    "devDependencies": {
+        "@types/bun": "^1.1.17",
+        "@types/react": "^18.3.18",
+        "@types/react-dom": "^18.3.5"
+    }
+}

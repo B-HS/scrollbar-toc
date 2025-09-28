@@ -1,0 +1,55 @@
+{
+    "name": "scrollbar-toc",
+    "version": "1.0.0",
+    "description": "Scrollbar-style sticky TOC for every JavaScript web framework/library",
+    "author": "Hyunseok Byun",
+    "license": "MIT",
+    "keywords": [
+        "toc",
+        "table-of-contents",
+        "scrollbar",
+        "sticky",
+        "navigation",
+        "heading",
+        "react",
+        "vue",
+        "svelte",
+        "vanilla-js"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/B-HS/scrollbar-toc.git"
+    },
+    "homepage": "https://github.com/B-HS/scrollbar-toc#readme",
+    "bugs": {
+        "url": "https://github.com/B-HS/scrollbar-toc/issues"
+    },
+    "type": "module",
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./dist/index.d.ts",
+                "default": "./dist/index.js"
+            },
+            "require": {
+                "types": "./dist/index.d.cts",
+                "default": "./dist/index.cjs"
+            }
+        }
+    },
+    "files": [
+        "dist",
+        "LICENSE"
+    ],
+    "scripts": {
+        "build": "tsdown",
+        "dev": "tsdown --watch",
+        "test": "bun test",
+        "test:watch": "bun test --watch"
+    },
+    "peerDependencies": {},
+    "devDependencies": {}
+}
