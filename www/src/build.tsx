@@ -16,6 +16,10 @@ const buildClient = async () => {
         sourcemap: 'external',
         outdir: config.distDir,
         external: libraryName ? [libraryName] : [],
+        define: {
+            'process.env.BASE_PATH': JSON.stringify(config.basePath),
+            'process.env.NODE_ENV': JSON.stringify('production'),
+        },
     })
 
     if (!result.success) {
