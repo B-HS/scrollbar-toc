@@ -67,6 +67,12 @@ export const en: Translation = {
         memoryEfficiency: 'Memory Efficiency',
         memoryEfficiencyDescription:
             'Button elements are created efficiently and event listeners are properly managed to prevent memory leaks in single-page applications.',
+        nextjsSupport: 'Next.js 16 Support',
+        nextjsSupportDescription:
+            'The library fully supports Next.js 16\'s cacheComponents feature. Navigation event listeners automatically perform cleanup on page transitions, preventing memory leaks even in cached component environments.',
+        reactHookPattern: 'React Hook Pattern (Recommended)',
+        reactHookPatternDescription:
+            'For React environments (especially Next.js), we recommend using a custom hook pattern with useEffect. This pattern fully integrates with component lifecycle for safer cleanup:',
         troubleshooting: 'Troubleshooting',
         ssrCompatibility: 'SSR Compatibility',
         ssrCompatibilityDescription:

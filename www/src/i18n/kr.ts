@@ -66,6 +66,12 @@ export const kr: Translation = {
         memoryEfficiency: '메모리 효율성',
         memoryEfficiencyDescription:
             '버튼 요소는 효율적으로 생성되며 이벤트 리스너는 싱글 페이지 애플리케이션에서 메모리 누수를 방지하기 위해 적절히 관리됩니다.',
+        nextjsSupport: 'Next.js 16 지원',
+        nextjsSupportDescription:
+            '라이브러리는 Next.js 16의 cacheComponents 기능을 완전히 지원합니다. Navigation 이벤트 리스너를 통해 페이지 전환 시 자동으로 cleanup을 수행하며, 캐시된 컴포넌트 환경에서도 메모리 누수를 방지합니다.',
+        reactHookPattern: 'React Hook 패턴 (권장)',
+        reactHookPatternDescription:
+            'React 환경(특히 Next.js)에서는 useEffect를 활용한 커스텀 hook 패턴을 권장합니다. 이 패턴은 컴포넌트의 생명주기와 완전히 통합되어 더 안전한 cleanup을 보장합니다:',
         troubleshooting: '문제 해결',
         ssrCompatibility: 'SSR 호환성',
         ssrCompatibilityDescription:

@@ -1,5 +1,5 @@
 import { CodeBlock } from '../components/code-block'
-import { customStylingCode, optionsCode, svelteExampleCode, vanillaExampleCode, vueExampleCode } from '../constant/codes'
+import { customStylingCode, optionsCode, reactHookExampleCode, svelteExampleCode, vanillaExampleCode, vueExampleCode } from '../constant/codes'
 import { useLanguage } from '../i18n/context'
 
 export const Sample = () => {
@@ -53,6 +53,14 @@ export const Sample = () => {
 
             <h3 id='memory-efficiency'>{t.sample.memoryEfficiency}</h3>
             <p>{t.sample.memoryEfficiencyDescription}</p>
+
+            <h3 id='nextjs-support'>{t.sample.nextjsSupport}</h3>
+            <p>{t.sample.nextjsSupportDescription}</p>
+
+            <h3 id='react-hook-pattern'>{t.sample.reactHookPattern}</h3>
+            <p>{t.sample.reactHookPatternDescription}</p>
+
+            <CodeBlock code={reactHookExampleCode} language='typescript' title='useScrollToc Hook' />
 
             <h2 id='troubleshooting'>{t.sample.troubleshooting}</h2>
 

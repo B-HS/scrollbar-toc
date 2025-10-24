@@ -124,6 +124,44 @@ export const customStylingCode = `.scroll-toc-button {
     }
 }`
 
+export const reactHookExampleCode = `import { useEffect, type RefObject } from 'react'
+import { setScrollToc } from 'scrollbar-toc'
+
+type ButtonOptions = {
+    className?: string
+    onClick?: (pos: any) => void
+    rightOffset?: number
+    scrollOffset?: number
+    buttonHeight?: number
+    exceptLevel?: number[]
+}
+
+export const useScrollToc = (
+    elementRef: RefObject<HTMLElement>,
+    options?: ButtonOptions
+) => {
+    useEffect(() => {
+        if (!elementRef.current) return
+        const cleanup = setScrollToc(elementRef.current, options)
+        return cleanup
+    }, [elementRef, options])
+}
+
+// Usage
+import { useRef } from 'react'
+import { useScrollToc } from './hooks/useScrollToc'
+
+export default function Page() {
+    const contentRef = useRef<HTMLDivElement>(null)
+
+    useScrollToc(contentRef, {
+        className: 'custom-toc',
+        scrollOffset: -100
+    })
+
+    return <div ref={contentRef}>...</div>
+}`
+
 export const optionsCode = `type ButtonOptions = {
     className?: string
     onClick?: ButtonClickCallback

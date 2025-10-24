@@ -3,7 +3,39 @@ import { calculateHeadingPositions } from '../utils/calculate'
 import { renderButtons } from '../ui/button'
 import type { ButtonOptions } from '../types/position'
 
-const containerMap = new WeakMap<HTMLElement, { containers: HTMLElement[]; rafId: number }>()
+const activeInstances = new Map<HTMLElement, {
+    containers: HTMLElement[]
+    rafId: number
+    cleanup: () => void
+}>()
+
+let navigationHandlerInitialized = false
+
+const initializeNavigationHandler = () => {
+    if (navigationHandlerInitialized || typeof window === 'undefined') return
+    navigationHandlerInitialized = true
+
+    const cleanupDisconnectedInstances = () => {
+        activeInstances.forEach((instance, element) => {
+            if (!element.isConnected || !document.contains(element)) {
+                instance.cleanup()
+            }
+        })
+    }
+
+    window.addEventListener('popstate', cleanupDisconnectedInstances)
+
+    const wrapHistoryMethod = (method: 'pushState' | 'replaceState') => {
+        const original = history[method]
+        history[method] = function (...args: Parameters<typeof original>) {
+            cleanupDisconnectedInstances()
+            return original.apply(this, args)
+        }
+    }
+
+    wrapHistoryMethod('pushState')
+    wrapHistoryMethod('replaceState')
+}
 
 export const setScrollToc = (htmlElement?: HTMLElement, options?: ButtonOptions) => {
     if (!htmlElement) return () => {}
@@ -12,10 +44,11 @@ export const setScrollToc = (htmlElement?: HTMLElement, options?: ButtonOptions)
     const body = document.querySelector('body')
     if (!body) return () => {}
 
-    const prev = containerMap.get(htmlElement)
+    initializeNavigationHandler()
+
+    const prev = activeInstances.get(htmlElement)
     if (prev) {
-        cancelAnimationFrame(prev.rafId)
-        prev.containers.forEach((c) => c.remove())
+        prev.cleanup()
     }
 
     const headings = parseHeading(htmlElement, options?.exceptLevel)
@@ -31,11 +64,11 @@ export const setScrollToc = (htmlElement?: HTMLElement, options?: ButtonOptions)
     const cleanup = () => {
         cancelAnimationFrame(rafId)
         containers.forEach((c) => c.remove())
-        containerMap.delete(htmlElement)
+        activeInstances.delete(htmlElement)
     }
 
     const check = () => {
-        if (!htmlElement.isConnected) {
+        if (!htmlElement.isConnected || !document.contains(htmlElement)) {
             cleanup()
             return
         }
@@ -44,7 +77,7 @@ export const setScrollToc = (htmlElement?: HTMLElement, options?: ButtonOptions)
 
     rafId = requestAnimationFrame(check)
 
-    containerMap.set(htmlElement, { containers, rafId })
+    activeInstances.set(htmlElement, { containers, rafId, cleanup })
 
     return cleanup
 }

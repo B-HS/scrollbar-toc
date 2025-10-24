@@ -58,6 +58,10 @@ export type Translation = {
         domOptimizationDescription: string
         memoryEfficiency: string
         memoryEfficiencyDescription: string
+        nextjsSupport: string
+        nextjsSupportDescription: string
+        reactHookPattern: string
+        reactHookPatternDescription: string
         troubleshooting: string
         ssrCompatibility: string
         ssrCompatibilityDescription: string
