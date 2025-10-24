@@ -12,7 +12,7 @@ const activeInstances = new Map<HTMLElement, {
 let navigationHandlerInitialized = false
 
 const initializeNavigationHandler = () => {
-    if (navigationHandlerInitialized || typeof window === 'undefined') return
+    if (navigationHandlerInitialized || typeof window === 'undefined' || typeof history === 'undefined') return
     navigationHandlerInitialized = true
 
     const cleanupDisconnectedInstances = () => {
